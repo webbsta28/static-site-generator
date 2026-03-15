@@ -1,7 +1,18 @@
 from textnode import *
 import os
-from copy_static import CopyStatic
+from copy_static import copy_files_recursive
+import shutil
+from blocks import extract_title
+dir_path_static = "static"
+dir_path_public = "public"
 
 def main():
-    CopyStatic()
+    
+    if os.path.exists(dir_path_public):
+        shutil.rmtree(dir_path_public)
+
+   
+    copy_files_recursive(dir_path_static, dir_path_public)
+    
+
 main()

@@ -151,4 +151,16 @@ def quote_to_html_node(block):
     return ParentNode("blockquote", children)
 
 
+def extract_title(markdown):
+    markdown_split = markdown.split("\n")
+    striped = ""
+    for line in markdown_split:
+        if line.startswith("#") and not line.startswith(("## ", "### ", "#### ", "##### ", "###### ")):
+            new_line = line.replace("#" , "")
+            striped = new_line.strip()
+            return striped
+    if striped == "":
+        raise Exception("no header")    
+    
+          
         
